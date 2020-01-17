@@ -294,7 +294,7 @@ module.exports = function(webpackEnv) {
       alias: {
         'ol': path.resolve(__dirname, '../', 'node_modules/ol'),
         'react': path.resolve(__dirname, '../', 'node_modules/react'),
-        'react-dom': path.resolve(__dirname, '../', 'node_modules/@hot-loader/react-dom'),
+        'react-dom': path.resolve(__dirname, '../', 'node_modules/react-dom'),
         'styled-components': path.resolve(__dirname, '../', 'node_modules/styled-components'),
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
