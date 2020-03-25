@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Controls, Map } from '@monsantoit/olKit' // TODO @monsantoco/ol-kit
+import { Controls, Map } from '@bayer/ol-kit'
 
 function App() {
   const onMapInit = map => {
