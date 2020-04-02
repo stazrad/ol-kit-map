@@ -1,6 +1,6 @@
 ## To Run Locally
 
-`git clone git@github.com:webbhead777/ol-kit-map.git`
+`git clone git@github.com:stazrad/ol-kit-map.git`
 
 run `npm link` on local version of `@monsantoit/olKit`
 
