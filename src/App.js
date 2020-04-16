@@ -1,5 +1,5 @@
 import React from 'react'
-import { Controls, Map } from '@bayer/ol-kit'
+import { Controls, Map, Popup, centerAndZoom, VectorLayer } from '@bayer/ol-kit'
 import olFeature from 'ol/feature'
 import olVectorLayer from 'ol/layer/vector'
 import olPoint from 'ol/geom/point'
@@ -26,6 +26,7 @@ function App() {
     <Map onMapInit={onMapInit} fullScreen>
       <DataLoader />
       <Controls />
+      <Popup />
     </Map>
   )
 }

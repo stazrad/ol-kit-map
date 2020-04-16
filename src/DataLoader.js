@@ -24,7 +24,7 @@ function DataLoader (props) {
         const coords = proj.fromLonLat([x,y])
         const feature = new olFeature(new olPoint(coords))
         const hasConfirmed = feat.attributes.Confirmed > 0
-        const color = hasConfirmed > 0 ? 'red' : 'blue'
+        const color = hasConfirmed ? 'red' : 'blue'
         const radius = hasConfirmed ? feat.attributes.Confirmed / 250 : feat.attributes.Confirmed
 
         feature.setProperties({ ...feat.attributes, title: `Confirmed: ${feat.attributes.Confirmed}` })
@@ -55,7 +55,6 @@ function DataLoader (props) {
   useEffect(() => {
     dataFetcher()
   }, [])
-  console.log('DATA', map)
 
   return null
 }
