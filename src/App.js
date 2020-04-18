@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Controls, Map, Popup, centerAndZoom, VectorLayer } from '@bayer/ol-kit'
 import olFeature from 'ol/feature'
 import olVectorLayer from 'ol/layer/vector'
@@ -6,27 +6,24 @@ import olPoint from 'ol/geom/point'
 import olVectorSource from 'ol/source/vector'
 
 import DataLoader from './DataLoader'
+import TimeTicker from './TimeTicker'
+import { createUSStatesLayer } from './utils'
 
 function App() {
+  const [dates, setDates] = useState([])
   const onMapInit = map => {
     console.log('we got a map!', map)
     window.map = map
 
-    // const features = []
-    // features.push(new olFeature(new olPoint([-10686671.119494, 4721671.569715])))
-    // features.push(new olFeature(new olPoint([-10646670.119494, 4721671.569715])))
-    //
-    // const source = new olVectorSource({ features })
-    // const vectorLayer = new olVectorLayer({ source })
-    //
-    // map.addLayer(vectorLayer)
+    map.addLayer(createUSStatesLayer())
   }
 
   return (
     <Map onMapInit={onMapInit} fullScreen>
-      <DataLoader />
+      <DataLoader setDates={setDates} />
       <Controls />
       <Popup />
+      <TimeTicker dates={dates} />
     </Map>
   )
 }

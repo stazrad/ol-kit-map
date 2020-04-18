@@ -11,40 +11,46 @@ import olFill from 'ol/style/fill'
 import olCircleStyle from 'ol/style/circle'
 
 function DataLoader (props) {
-  const { map } = props
+  const { map, setDates } = props
   const dataFetcher = async () => {
-    const dataUrl = 'https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases_US/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json'
+    const dataUrl = 'https://covidtracking.com/api/v1/states/daily.json'
     const request = await fetch(dataUrl)
     const data = await request.json()
     const features = []
-
-    data.features.forEach(feat => {
-      if (feat.geometry) {
-        const {x, y} = feat.geometry
-        const coords = proj.fromLonLat([x,y])
-        const feature = new olFeature(new olPoint(coords))
-        const hasConfirmed = feat.attributes.Confirmed > 0
-        const color = hasConfirmed ? 'red' : 'blue'
-        const radius = hasConfirmed ? feat.attributes.Confirmed / 250 : feat.attributes.Confirmed
-
-        feature.setProperties({ ...feat.attributes, title: `Confirmed: ${feat.attributes.Confirmed}` })
-        feature.setStyle(
-          new olStyle({
-            image: new olCircleStyle({
-              radius,
-              fill: new olFill({ color }),
-              stroke: new olStroke({
-                color,
-                width: 1
-              })
-            })
-          })
-        )
-        feature.getStyle().getImage().setOpacity(.4)
-
-        features.push(feature)
-      }
+    data.forEach(dataPoint => {
+      if (dataPoint.state === 'MO') console.log(dataPoint)
     })
+    const dates = data.filter(d => d.state === 'MO')
+
+    setDates(dates)
+
+    // data.features.forEach(feat => {
+    //   if (feat.geometry) {
+    //     const {x, y} = feat.geometry
+    //     const coords = proj.fromLonLat([x,y])
+    //     const feature = new olFeature(new olPoint(coords))
+    //     const hasConfirmed = feat.attributes.Confirmed > 0
+    //     const color = hasConfirmed ? 'red' : 'blue'
+    //     const radius = hasConfirmed ? feat.attributes.Confirmed / 250 : feat.attributes.Confirmed
+    //
+    //     feature.setProperties({ ...feat.attributes, title: feat.attributes.Combined_Key })
+    //     feature.setStyle(
+    //       new olStyle({
+    //         image: new olCircleStyle({
+    //           radius,
+    //           fill: new olFill({ color }),
+    //           stroke: new olStroke({
+    //             color,
+    //             width: 1
+    //           })
+    //         })
+    //       })
+    //     )
+    //     feature.getStyle().getImage().setOpacity(.4)
+    //
+    //     features.push(feature)
+    //   }
+    // })
 
     const source = new olVectorSource({ features })
     const vectorLayer = new olVectorLayer({ source })
