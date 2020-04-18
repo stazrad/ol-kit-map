@@ -8,7 +8,7 @@
     "test": "node scripts/test.js"
   },
   "dependencies": {
-    "@bayer/ol-kit": "^0.3.0-1",
+    "@bayer/ol-kit": "^0.3.0-2",
     "moment": "^2.24.0",
     "ol": "^4.6.5",
     "react": "^16.12.0",

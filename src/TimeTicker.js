@@ -49,7 +49,7 @@ function TimeTicker (props) {
   const { dates = [] } = props
   const [active, setActive] = useState(null)
   const [selected, setSelected] = useState(null)
-  console.log(active?.date && moment(active?.dateChecked))
+  // console.log(active?.date && moment(active?.dateChecked))
 
   return (
     <Container className='_popup_boundary'>

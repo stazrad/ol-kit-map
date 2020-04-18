@@ -17,9 +17,6 @@ function DataLoader (props) {
     const request = await fetch(dataUrl)
     const data = await request.json()
     const features = []
-    data.forEach(dataPoint => {
-      if (dataPoint.state === 'MO') console.log(dataPoint)
-    })
     const dates = data.filter(d => d.state === 'MO')
 
     setDates(dates)
