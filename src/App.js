@@ -1,13 +1,8 @@
 import React, { useState } from 'react'
-import { Controls, Map, Popup, centerAndZoom, VectorLayer } from '@bayer/ol-kit'
-import olFeature from 'ol/feature'
-import olVectorLayer from 'ol/layer/vector'
-import olPoint from 'ol/geom/point'
-import olVectorSource from 'ol/source/vector'
+import { Controls, Map, Popup, createUSStatesLayer } from '@bayer/ol-kit'
 
 import DataLoader from './DataLoader'
 import TimeTicker from './TimeTicker'
-import { createUSStatesLayer } from './utils'
 
 function App() {
   const [dates, setDates] = useState([])
