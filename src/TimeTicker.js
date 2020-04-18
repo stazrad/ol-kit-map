@@ -52,7 +52,7 @@ function TimeTicker (props) {
   console.log(active?.date && moment(active?.dateChecked))
 
   return (
-    <Container>
+    <Container className='_popup_boundary'>
       <Ticks>
         {dates.map((date, i) =>
           <Tick

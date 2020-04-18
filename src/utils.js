@@ -25,7 +25,7 @@ export const createUSStatesLayer = () => {
       : new olPolygon(coords)
     const feature = new olFeature({ geometry: olGeom })
 
-    feature.setStyle(
+    layer.setStyle(
       new olStyle({
         fill: new olFill({ color: '#7FDBFF33' }),
         stroke: new olStroke({
