@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Controls, Map, Popup, createUSStatesLayer } from '@bayer/ol-kit'
+import { Controls, Map, Popup, createDataLayer } from '@bayer/ol-kit'
 
 import DataLoader from './DataLoader'
 import TimeTicker from './TimeTicker'
@@ -10,7 +10,7 @@ function App() {
     console.log('we got a map!', map)
     window.map = map
 
-    map.addLayer(createUSStatesLayer())
+    map.addLayer(createDataLayer('us_states'))
   }
 
   return (
