@@ -1,5 +1,5 @@
 import React from 'react'
-import { Controls, Map } from '@bayer/ol-kit'
+import { Controls, Map, LayerStyler } from '@bayer/ol-kit'
 
 function App() {
   const onMapInit = map => {
@@ -10,6 +10,9 @@ function App() {
   return (
     <Map onMapInit={onMapInit} fullScreen>
       <Controls />
+      <div style={{ height: '100%', width: '500px', backgroundColor: 'white', position: 'absolute' }}>
+        <LayerStyler />
+      </div>
     </Map>
   )
 }
